@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual Environment
+.venv/
+venv/
+
+# Environment Variables (YOUR API KEYS - never commit these)
+.env
+
+# VS Code
+.vscode/
+
+# Mac
+.DS_Store
