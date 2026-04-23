@@ -15,3 +15,6 @@ venv/
 
 # Mac
 .DS_Store
+
+# Python egg info (auto-generated, never commit)
+*.egg-info/
