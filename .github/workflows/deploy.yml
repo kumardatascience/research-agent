@@ -20,4 +20,6 @@ jobs:
         run: |
           git config --global user.email "action@github.com"
           git config --global user.name "GitHub Action"
-          git push https://kumardatascience:$HF_TOKEN@huggingface.co/spaces/kumardatascience/research-agent main
+          git push https://kumardatascience:$HF_TOKEN@huggingface.co/spaces/kumardatascience/research-agent main --force
+
+          
