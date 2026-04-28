@@ -1,3 +1,4 @@
+from src.research_agent.report.generator import generate_pdf_report 
 import streamlit as st
 from src.research_agent.agent.graph import build_graph, ResearchState
 result = None
@@ -18,7 +19,7 @@ col1, col2 = st.columns([3, 1])
 with col1:
     topic = st.text_input(
         label="Enter your research topic:",
-        placeholder="e.g. Impact of AI on healthcare in 2024",
+        placeholder="e.g. Impact of AI on healthcare in 2026",
         help="Be specific for better results"
     )
 
@@ -41,6 +42,8 @@ if start_button and not topic:
 
 if start_button and topic:
     with st.spinner("🔍 Agent is researching... This may take 30-60 seconds"):
+
+
         graph = build_graph()
         initial_state = {
             "topic": topic,
@@ -78,4 +81,18 @@ if result:
         )
     st.subheader("📋 Research Report")
     st.markdown(result["final_report"])    
+
+    st.divider()
+    
+    pdf_bytes = generate_pdf_report(
+        topic=topic,
+        content=result["final_report"]
+    )
+    
+    st.download_button(
+        label="📥 Download PDF Report",
+        data=pdf_bytes,
+        file_name=f"research_{topic[:30].replace(' ', '_')}.pdf",
+        mime="application/pdf"
+    )
 
